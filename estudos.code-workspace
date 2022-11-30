@@ -1,0 +1,102 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.autoSave": "onFocusChange",
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": false,
+    "explorer.sortOrder": "type",
+    "explorer.autoReveal": true,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": false,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.minimap.autohide": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorStyle": "line",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": true
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.autopep8",
+      "editor.formatOnSave": true
+    },
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": true,
+    "python.testing.pytestArgs": ["tests"],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.formatting.provider": "none",
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.iconTheme": "vscode-icons",
+    "window.zoomLevel": 0.8
+  },
+  "extensions": {
+    "recommendations": [
+      "rioj7.command-variable",
+      "ms-python.isort",
+      "esbenp.prettier-vscode",
+      "ms-python.vscode-pylance",
+      "ms-python.pylint",
+      "donjayamanne.python-environment-manager",
+      "ms-python.python",
+      "donjayamanne.python-extension-pack",
+      "kevinrose.vsc-python-indent",
+      "vscode-icons-team.vscode-icons",
+      "visualstudioexptteam.vscodeintellicode",
+      "visualstudioexptteam.intellicode-api-usage-examples",
+      "visualstudioexptteam.vscodeintellicode-completions",
+      "ms-python.autopep8",
+      "sourcery.sourcery",
+      "sonarsource.sonarlint-vscode",
+      "ms-azuretools.vscode-docker",
+      "streetsidesoftware.code-spell-checker-portuguese-brazilian"
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: Arquivo Atual",
+        "type": "python",
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "module": "${input:currentPythonModule}"
+      },
+      {
+        "name": "Módulo",
+        "type": "python",
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "module": "${input:userPythonModule}"
+      }
+    ],
+    "inputs": [
+      {
+        "id": "userPythonModule",
+        "type": "promptString",
+        "description": "Informe o módulo que será executado:"
+      },
+      {
+        "id": "currentPythonModule",
+        "type": "command",
+        "command": "extension.commandvariable.transform",
+        "args": {
+          "text": "${command:extension.commandvariable.file.relativeFileDotsNoExtension}",
+          "find": "app.",
+          "replace": ""
+        }
+      }
+    ],
+    "compounds": []
+  }
+}
